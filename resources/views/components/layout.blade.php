@@ -28,7 +28,7 @@
             <li>
                 <form action="{{ route('logout') }}" method="POST" class="inline">
                     @csrf
-                    <button type="submit" class="hover:text-blue-200 transition">Выйти ({{ Auth::user()->login }})</button>
+                    <button type="submit" class="hover:text-blue-200 transition">Выйти</button>
                 </form>
             </li>
         @else
