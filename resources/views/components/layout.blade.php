@@ -28,12 +28,12 @@
             <li>
                 <form action="{{ route('logout') }}" method="POST" class="inline">
                     @csrf
-                    <button type="submit" class="hover:text-blue-200 transition">Exit</button>
+                    <button type="submit" class="hover:text-blue-200 transition">Выйти</button>
                 </form>
             </li>
         @else
-            <li><a href="{{ route('login') }}" class="hover:text-blue-200 transition">Login</a></li>
-            <li><a href="{{ route('register') }}" class="hover:text-blue-200 transition">Register</a></li>
+            <li><a href="{{ route('login') }}" class="hover:text-blue-200 transition">Войти</a></li>
+            <li><a href="{{ route('register') }}" class="hover:text-blue-200 transition">Регистрация</a></li>
         @endauth
     </ul>
 </nav>
