@@ -43,14 +43,20 @@
                                 </div>
                             @endif
                             
-                            <form action="{{ route('cards.destroy', $card) }}" method="POST" class="mt-4">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" 
-                                        class="bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded text-sm transition">
-                                    Удалить
-                                </button>
-                            </form>
+                            <div class="mt-4 flex space-x-2">
+    <a href="{{ route('cards.edit', $card) }}" 
+       class="bg-blue-500 hover:bg-blue-600 text-white py-1 px-3 rounded text-sm transition">
+        Редактировать
+    </a>
+    <form action="{{ route('cards.destroy', $card) }}" method="POST">
+        @csrf
+        @method('DELETE')
+        <button type="submit" 
+                class="bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded text-sm transition">
+            Удалить
+        </button>
+    </form>
+</div>
                         </div>
                     @endforeach
                 </div>

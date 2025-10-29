@@ -55,4 +55,40 @@ class CardController extends Controller
 
         return redirect()->route('cards.index')->with('success', 'Карточка архивирована.');
     }
+
+    public function edit(Card $card)
+{
+    if ($card->user_id !== Auth::id()) {
+        abort(403);
+    }
+    
+    return view('cards.edit', compact('card'));
+}
+
+public function update(Request $request, Card $card)
+{
+    if ($card->user_id !== Auth::id()) {
+        abort(403);
+    }
+
+    $request->validate([
+        'author' => 'required|string|max:255',
+        'title' => 'required|string|max:255',
+        'type' => 'required|in:share,wish',
+        'year' => 'nullable|integer|min:1900|max:' . date('Y'),
+    ]);
+
+    $card->update([
+        'author' => $request->author,
+        'title' => $request->title,
+        'type' => $request->type,
+        'publisher' => $request->publisher,
+        'year' => $request->year,
+        'binding' => $request->binding,
+        'condition' => $request->condition,
+        'status' => 'pending',
+    ]);
+
+    return redirect()->route('cards.index')->with('success', 'Карточка обновлена и отправлена на модерацию.');
+}
 }

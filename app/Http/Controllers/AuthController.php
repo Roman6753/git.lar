@@ -66,17 +66,13 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'full_name' => 'required|string|max:255|regex:/^[а-яА-ЯёЁ\s]+$/u',
-            'login' => 'required|string|min:6|unique:users|regex:/^[а-яА-ЯёЁa-zA-Z0-9_]+$/u',
-            'phone' => 'required|regex:/^\+7\(\d{3}\)-\d{3}-\d{2}-\d{2}$/',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|string|min:6|confirmed',
-        ], [
-            'full_name.regex' => 'ФИО должно содержать только кириллические символы и пробелы.',
-            'login.regex' => 'Логин должен содержать только кириллические символы, латиницу, цифры и подчеркивания.',
-            'phone.regex' => 'Телефон должен быть в формате +7XXX-XXX-XX-XX.',
-        ]);
+         $validator = Validator::make($request->all(), [
+        'full_name' => 'required|string|max:255|regex:/^[А-Яа-яЁё\s]+$/u',
+        'login' => 'required|string|min:6|unique:users|regex:/^[A-Za-zА-Яа-я0-9_]+$/u',
+        'phone' => 'required|regex:/^\+7\(\d{3}\)-\d{3}-\d{2}-\d{2}$/',
+        'email' => 'required|email|unique:users',
+        'password' => 'required|string|min:6|confirmed',
+    ]);
 
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();

@@ -1,4 +1,18 @@
 <x-layout>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+    <div class="bg-white p-6 rounded-lg shadow text-center">
+        <div class="text-3xl font-bold text-blue-600 mb-2">{{ \App\Models\User::count() }}</div>
+        <div class="text-gray-600">Пользователей</div>
+    </div>
+    <div class="bg-white p-6 rounded-lg shadow text-center">
+        <div class="text-3xl font-bold text-green-600 mb-2">{{ \App\Models\Card::where('type', 'share')->where('status', 'approved')->count() }}</div>
+        <div class="text-gray-600">Книг для обмена</div>
+    </div>
+    <div class="bg-white p-6 rounded-lg shadow text-center">
+        <div class="text-3xl font-bold text-purple-600 mb-2">{{ \App\Models\Card::where('type', 'wish')->where('status', 'approved')->count() }}</div>
+        <div class="text-gray-600">Книг в поиске</div>
+    </div>
+</div>
     <div class="text-center py-12">
         <h1 class="text-4xl font-bold text-gray-800 mb-6">Добро пожаловать в Буквоежку!</h1>
         <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
