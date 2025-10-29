@@ -2,14 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Category;
-use App\Models\Image;
-use App\Models\Post;
-use App\Models\Role;
-use App\Models\Tag;
+use App\Models\Card;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -21,14 +18,15 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
 
-        User::query()->create([
-            'fio' => 'Admin Admin',
-            'login' => 'Администратор',
-            'tel' => '+78363732634',
+        User::create([
+            'full_name' => 'Admin Admin',
+            'login' => 'admin',
+            'phone' => '+7(836)-373-26-34',
             'email' => 'admin@admin.ru',
-            'password' => '1111',
+            'password' => Hash::make('bookworm'),
         ]);
 
         User::factory(5)->create();
+        Card::factory(30)->create();
     }
 }

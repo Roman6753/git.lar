@@ -9,7 +9,7 @@ class Card extends Model
 {
     /** @use HasFactory<\Database\Factories\CardFactory> */
     use HasFactory;
-    protected $fillable = [
+   protected $fillable = [
         'user_id', 'author', 'title', 'type', 'status', 'reason',
         'publisher', 'year', 'binding', 'condition'
     ];
@@ -17,5 +17,25 @@ class Card extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function isPending()
+    {
+        return $this->status === 'pending';
+    }
+
+    public function isApproved()
+    {
+        return $this->status === 'approved';
+    }
+
+    public function isRejected()
+    {
+        return $this->status === 'rejected';
+    }
+
+    public function isArchived()
+    {
+        return $this->status === 'archived';
     }
 }
