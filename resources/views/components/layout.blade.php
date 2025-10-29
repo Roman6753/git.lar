@@ -16,9 +16,10 @@
                 </div>
                 <nav>
     <ul class="flex space-x-6">
+        <li><a href="{{ route('home') }}" class="hover:text-blue-200 transition">Главная</a></li>
+        <li><a href="{{ route('catalog.index') }}" class="hover:text-blue-200 transition">Каталог книг</a></li>
+        
         @auth
-            <li><a href="{{ route('home') }}" class="hover:text-blue-200 transition">Главная</a></li>
-            <li><a href="{{ route('catalog.index') }}" class="hover:text-blue-200 transition">Каталог книг</a></li>
             <li><a href="{{ route('cards.index') }}" class="hover:text-blue-200 transition">Мои карточки</a></li>
             <li><a href="{{ route('cards.create') }}" class="hover:text-blue-200 transition">Создать карточку</a></li>
             @if(Auth::user()->login === 'admin')
@@ -27,7 +28,7 @@
             <li>
                 <form action="{{ route('logout') }}" method="POST" class="inline">
                     @csrf
-                    <button type="submit" class="hover:text-blue-200 transition">Выйти</button>
+                    <button type="submit" class="hover:text-blue-200 transition">Выйти ({{ Auth::user()->login }})</button>
                 </form>
             </li>
         @else

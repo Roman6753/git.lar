@@ -18,9 +18,11 @@ Route::middleware('guest')->group(function () {
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth'])->group(function () {
-    Route::resource('cards', CardController::class)->except(['show', 'edit', 'update']);
+    Route::get('/cards', [CardController::class, 'index'])->name('cards.index');
+    Route::get('/cards/create', [CardController::class, 'create'])->name('cards.create');
+    Route::post('/cards', [CardController::class, 'store'])->name('cards.store');
+    Route::delete('/cards/{card}', [CardController::class, 'destroy'])->name('cards.destroy');
 });
-
 
 Route::get('/catalog', [CatalogController::class, 'index'])->name('catalog.index');
 
