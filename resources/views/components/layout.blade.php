@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Буквоежка - Портал обмена книгами</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="{{asset('public/tailwindcss.js')}}"></script>
 </head>
 <body class="bg-gray-50">
     <header class="bg-blue-800 text-white shadow-md">
